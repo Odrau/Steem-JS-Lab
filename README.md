@@ -23,4 +23,4 @@ https://steemit.com/@odrau
 **Bitcoin**:  1PE8M2yJvvrMTiNHWSpVQ2ZKFhad13mWn5 <br> 
 **Etherium**: 0x511EEc68FC2d727E4133aFd648Dd9d8520802CcE
 
-
+**_Thank You_**
