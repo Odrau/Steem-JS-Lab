@@ -1,0 +1,330 @@
+<!-- Written by @odrau - 2018 -->
+<!-- https://steemit.com/@odrau -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post By Author</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+  .hidden{display: none;}
+  pre{white-space: pre-wrap;}
+  a:link{text-decoration: none;}
+  a:hover{text-decoration: none;}
+  a:active{text-decoration: none;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="form-div">
+    <!-- form start -->
+    <form id="da-form">
+      <div class="row">
+        <div class="col-md-10">
+          <h3>Posts By Author</h3>
+          <h5><i>Formatted to embed in future posts.</i></h5>
+        </div>
+        <div class="col-md-2">
+        </br>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Made with <span class="glyphicon glyphicon-heart"></span> by Odrau
+              <span class="caret"></span>
+            </button></br></br>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="https://steemit.com/@odrau" target="_blank"> <span class="glyphicon glyphicon-link"></span> Steemit.com Profile</a>
+              </li>
+              <li>
+                <a href="https://staging.busy.org/@odrau" target="_blank"> <span class="glyphicon glyphicon-flash"></span> Busy.org Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <a href="#" data-toggle="tooltip" title="Steem username without the '@' symbol.">
+          <label for="author"><span class="glyphicon glyphicon-user"></span> Author:</label></a>
+          <input type="text" id="author" name="author" required></br></br>
+          <a href="#" data-toggle="tooltip" title="Number of posts to query.">
+          <label for="limit"><span class="glyphicon glyphicon-time"></span> Limit:</label></a>
+          <input type="text" id="limit" name="limit" maxlength="2" required></br></br>
+        </div>
+        <div class="col-md-2">
+          <span class="glyphicon glyphicon-eye-open"></span> <b>Style Options:</b></br>
+          <label>
+            <span class="glyphicon glyphicon-th-list"></span>
+            <select name="s_bullet" id="s_bullet">
+              <option value="">None</option>
+              <option value="• ">•</option>
+              <option value="● ">●</option>
+              <option value="˃ ">˃</option>
+              <option value="⮞ ">⮞</option>
+              <option value="➤ ">➤</option>
+              <option value="➣ ">➣</option>
+              <option value="➥ ">➥</option>
+              <option value="✒ ">✒</option>
+              <option value="◆ ">◆</option>
+              <option value="♥ ">♥</option>
+            </select>
+          </label>
+          <label>
+          <span class="glyphicon glyphicon-text-size"></span>
+            <select name="s_size" id="s_size">
+              <option value="normal">Normal</option>
+              <option value="small">Small</option>
+              <option value="smaller">Smaller</option>
+              <option value="tiny">Tiny</option>
+              <option value="h1">Heading 1</option>
+              <option value="h2">Heading 2</option>
+              <option value="h3">Heading 3</option>
+              <option value="h4">Heading 4</option>
+              <option value="h5">Heading 5</option>
+              <option value="h6">Heading 6</option>
+            </select>
+          </label>
+          <label>
+          <span class="glyphicon glyphicon-align-center"></span>
+            <select name="s_align" id="s_align">
+              <option value="none">None</option>
+              <option value="center">Centered</option>
+              <option value="left">Float Left</option>
+              <option value="right">Float Right</option>
+            </select>
+          </label></br></br>
+        </div>
+        <div class="col-md-2">
+          <a href="#" data-toggle="tooltip" title="Filtered results are not relative to query limit - so for more filtered results increase limit"><label><span class="glyphicon glyphicon-filter"></span> Filter By:</label></a></br>
+          <label>
+            <input type="radio" name="filterIs" id="cat" value="cat">
+            <a href="#" data-toggle="tooltip" title="Category is the first tag used on a post" onclick="toggle_F_Radial('cat')">
+              <span class="glyphicon glyphicon-star"></span> Category
+            </a>
+          </label>
+          <label>
+            <input type="radio" name="filterIs" id="tag" value="tag">
+            <a href="#" data-toggle="tooltip" title="Tag is any occurrence of a tag, no matter order." onclick="toggle_F_Radial('tag')">
+              <span class="glyphicon glyphicon-tag"></span> Tag
+            </a>
+          </label>
+          <label>
+            <input type="radio" name="filterIs" id="regex_t" value="regex_t">
+            <a href="#" data-toggle="tooltip" title="RegEx Match (Case-Insensitive) in the title of post(s)." onclick="toggle_F_Radial('regex_t')">
+              <span class="glyphicon glyphicon-search"></span> RegEx Title
+            </a>
+          </label>
+          <label>
+            <input type="radio" name="filterIs" id="regex_b" value="regex_b">
+            <a href="#" data-toggle="tooltip" title="RegEx Match (Case-Insensitive) in the body of post(s)." onclick="toggle_F_Radial('regex_b')">
+              <span class="glyphicon glyphicon-search"></span> RegEx Body
+            </a>
+          </label>
+          <input type="text" class="hidden" id="filter" name="filter" placeholder="filter by: optional"></br></br>
+        </div>
+        <div class="col-md-3">
+          <span class="glyphicon glyphicon-refresh"></span> <b>Order:</b></br>
+          <input type="checkbox" id="reverseOrder" name="reverseOrder">
+          <label for="reverseOrder">
+            <a href="#" data-toggle="tooltip" title="Older posts first." onclick="toggleCheckBox('reverseOrder')">
+              <span class="glyphicon glyphicon-sort-by-attributes-alt"></span> Reverse Results
+            </a>
+          </label>
+        </br>
+          <span class="glyphicon glyphicon-link"></span> <b>Links:</b></br>
+            <label>
+              <input type="radio" name="linkIs" id="relative" value="relative" checked onclick="toggle_L_Radial('relative')">
+              <a href="#" data-toggle="tooltip" title="Links without full path (no domain)" onclick="toggle_L_Radial('relative')">
+                <span class="glyphicon glyphicon-import"></span> Relative
+              </a>
+            </label>
+            <label>
+              <input type="radio" name="linkIs" id="absolute" value="absolute" onclick="toggle_L_Radial('absolute')">
+              <a href="#" data-toggle="tooltip" title="Links with a front ends domain specified" onclick="toggle_L_Radial('absolute')">
+                <span class="glyphicon glyphicon-export"></span> Absolute
+              </a>
+            </label>
+            <input type="text" class="hidden" id="domain" name="domain" placeholder="e.g. https://busy.org"></br></br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="submit-btn-div">
+            <button type="button" class="btn btn-default btn-sm" onclick="pba(document.getElementById('author').value,document.getElementById('limit').value)">
+            <span class="glyphicon glyphicon-plus"></span> Submit</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>
+<!-- Form End -->
+   <div class="hidden" id="results-div">
+      <div class="row">
+        <div class="col-md-12">
+          </br>
+          <button type="button" class="btn btn-default btn-sm" onclick="CopyToClipboard('pba')">
+          <span class="glyphicon glyphicon-share"></span> Get Embed Code</button>
+          <button type="button" class="btn btn-default btn-sm" onclick="resetForm()">
+          <span class="glyphicon glyphicon-repeat"></span> Reset</button>
+          <div class="pull-right" id="show-love-div">
+            <a href="https://steemit.com/@odrau" target="_blank">Show @odrau some 💓 for making this!</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <figure>
+              <pre id="pba"></pre>
+            </figure>
+        </div>
+      </div>
+  </div>
+<!-- results div end -->
+<!-- loading div -->
+  <div class="hidden" id="loading-div">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Scripts be here -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Steem JavaScript -->
+<script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<!-- Functions by @Odrau - new to js - I'm sure there are better methods -->
+<script>
+  function pba(author, limit){
+    document.getElementById('pba').innerHTML = "";
+		var pba = document.getElementById('pba');
+    var bullet = document.getElementById('s_bullet').value;
+    var size = document.getElementById('s_size').value;
+    var align = document.getElementById('s_align').value;
+      if (size == "normal"){var cb_size = "",ca_size = "";}
+        else if (size == "small"){var cb_size = "&lt;sub&gt;",ca_size = "&lt;/sub&gt;";}
+        else if (size == "smaller"){var cb_size = "&lt;sub&gt;&lt;sub&gt;",ca_size = "&lt;/sub&gt;&lt;/sub&gt;";}
+        else if (size == "tiny"){var cb_size = "&lt;sub&gt;&lt;sub&gt;&lt;sub&gt;",ca_size = "&lt;/sub&gt;&lt;/sub&gt;&lt;/sub&gt;";}
+        else if (size == "h1"){var cb_size = "&lt;h1&gt;",ca_size = "&lt;/h1&gt;";}
+        else if (size == "h2"){var cb_size = "&lt;h2&gt;",ca_size = "&lt;/h2&gt;";}
+        else if (size == "h3"){var cb_size = "&lt;h3&gt;",ca_size = "&lt;/h3&gt;";}
+        else if (size == "h4"){var cb_size = "&lt;h4&gt;",ca_size = "&lt;/h4&gt;";}
+        else if (size == "h5"){var cb_size = "&lt;h5&gt;",ca_size = "&lt;/h5&gt;";}
+        else if (size == "h6"){var cb_size = "&lt;h6&gt;",ca_size = "&lt;/h6&gt;"};
+      if (align == "none"){var cb_align = "",ca_align = "";}
+        else if (align == "center"){var cb_align = "&lt;center&gt;<br>",ca_align = "<br>&lt;/center&gt;";}
+        else if (align == "left"){var cb_align = "&lt;div class=\"pull-left\"&gt;<br>",ca_align = "<br>&lt;/div&gt;";}
+        else if (align == "right"){var cb_align = "&lt;div class=\"pull-right\"&gt;<br>",ca_align = "<br>&lt;/div&gt;"};
+    var br_bl = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    var radios = document.getElementsByName('filterIs');
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            if (radios[i].value == "cat") {var f_cat = document.getElementById('filter').value;}
+            else if (radios[i].value == "tag") {var f_tag = document.getElementById('filter').value;}
+            else if (radios[i].value == "regex_t") {var swht = "ttl",regex = document.getElementById('filter').value;}
+            else if (radios[i].value == "regex_b") {var swht = "bdy",regex = document.getElementById('filter').value};
+            break;
+        }
+    }
+      if (document.getElementById('relative').checked){var domain = "";}
+      else if (document.getElementById('absolute').checked){var domain = document.getElementById('domain').value};
+// Steem Js Function - Call
+  steem.api.getDiscussionsByAuthorBeforeDate(author, null, new Date().toISOString().split('.')[0], limit, function(err, result) {
+    if (!err) {
+      result.map(function (da) {
+         // console.log(da)
+        document.title = "Post by @"+author;
+        var title = da.title,url = da.url,cat = da.category,body = da.body;
+        var json = JSON.parse(da.json_metadata),tags = json.tags;
+       if (f_cat == cat || !f_cat || tags.includes(f_tag) || !f_tag) {
+       if (swht == "ttl" && title.match(new RegExp(regex, "i"))
+          || swht == "bdy" && body.match(new RegExp(regex, "i")) || !regex) {
+              var title = title.replace(/[@]/g, "@ ");
+  			      var code = document.createElement('code');
+              if (br_bl.includes(size)){
+                code.innerHTML = `&lt;a href="${domain}${url}"&gt;${cb_size}${bullet}${title}${ca_size}&lt;/a&gt;`;
+              } else {
+                code.innerHTML = `&lt;a href="${domain}${url}"&gt;${cb_size}${bullet}${title}${ca_size}&lt;/a&gt;&lt;br&gt;`;
+              };
+  			  		pba.appendChild(code);
+            }
+          }
+  		    });
+          if (document.getElementById('reverseOrder').checked){
+            $('#pba').reverseChildren();
+          }
+          var codeBefore = document.createElement("code");
+            codeBefore.innerHTML = cb_align;
+            pba.insertBefore(codeBefore, pba.childNodes[0]);
+          var codeAfter = document.createElement("code");
+            codeAfter.innerHTML = ca_align;
+            pba.appendChild(codeAfter);
+          $("#form-div").addClass('hidden');
+          $("#results-div").removeClass('hidden');
+            setTimeout(scrollTop(), 200);
+  		  }
+    });
+  };
+    function CopyToClipboard(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+          range.moveToElementText(document.getElementById(containerid));
+          range.select().createTextRange();
+          document.execCommand("copy");
+    } else if (window.getSelection) {
+        var range = document.createRange();
+           range.selectNode(document.getElementById(containerid));
+           window.getSelection().addRange(range);
+           document.execCommand("copy");
+         alert("Copied to Clipboard!");
+    }};
+    function resetForm(){
+      document.getElementById("da-form").reset();
+      $("#results-div").addClass('hidden');
+      $("#form-div").removeClass('hidden');
+      $("#filter").addClass('hidden');
+      $("#domain").addClass('hidden');
+      setTimeout(scrollTop(), 200);
+    };
+    function scrollTop(){
+      window.scrollTo(0,0);
+    };
+    function toggle_F_Radial(ID){
+      if (!document.getElementById(ID).checked){
+        document.getElementById(ID).checked = true;
+        $("#filter").removeClass('hidden');
+      }
+      else if (document.getElementById(ID).checked){
+        document.getElementById(ID).checked = false;
+        $("#filter").addClass('hidden');
+      }
+    };
+    function toggle_L_Radial(ID){
+      if (!document.getElementById(ID).checked){
+        document.getElementById(ID).checked = true;
+      }
+      if (ID === "absolute"){
+        $("#domain").removeClass('hidden');
+      } else {
+        $("#domain").addClass('hidden');
+      }
+    }
+    function toggleCheckBox(ID){
+      if (!document.getElementById(ID).checked){
+        document.getElementById(ID).checked = true;
+      } else {
+        document.getElementById(ID).checked = false;
+      }
+    };
+    $.fn.reverseChildren = function() {
+      return this.each(function(){
+        var $this = $(this);
+        $this.children().each(function(){ $this.prepend(this) });
+      });
+    };
+  </script>
+  </body>
+</html>
+<!-- Written by @odrau - 2018 -->
+<!-- https://steemit.com/@odrau -->
