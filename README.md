@@ -9,7 +9,7 @@ https://discord.gg/7nSm5Ux
 ## Projects To Date:
 
 * **PBA** (post by author) This tool allows you to get previous posts by specified author and applies different Steem compatible HTML formats. You can then include the code in your future Steem posts! Having links to your previous post will help foster engagement on your other posts and will help you gain a larger audience. So this is super useful and Important! Additionally, there are some methods to filter the results, via Category, Tags, Regex search within the Title or Body of a post.
-
+***
 
 ### If these tools help you by saving you time and making your content better/more engaging, please consider donating to the developer.  
 
