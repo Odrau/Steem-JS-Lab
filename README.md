@@ -1,7 +1,7 @@
 # Steem-JS-Lab
 These are web apps I made using SteemJs.
 
->I'm have been learning Javascript while intereacting with SteemJs, Bootstrap, Jquerry, and other libraries. I like thinking outside the box and coming up with solutions that will help the average person.  If you have any suggestions or ideas, please join my Discord server and let me know! 
+>I'm have been learning Javascript while intereacting with SteemJs, Bootstrap, Jquery, and other libraries. I like thinking outside the box and coming up with solutions that will help the average person.  If you have any suggestions or ideas, please join my Discord server and let me know! 
 
 https://discord.gg/7nSm5Ux
 
